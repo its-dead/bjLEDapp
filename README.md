@@ -81,7 +81,7 @@ https://github.com/8none1/bj_led
   to something meaningful (e.g. "Rainbow fade", "Strobe") once you know what
   they do.
 - **`applicationId`** in `android/app/build.gradle` is set to
-  `com.example.bjled_app` — fine for personal use on your own device, but
+  `light it up` — fine for personal use on your own device, but
   change it before sharing the app or publishing anywhere.
 - **Release signing** currently falls back to the debug keystore so
   `flutter run --release` works without extra setup. Set up your own

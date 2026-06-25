@@ -21,7 +21,7 @@ apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-    namespace 'com.example.bjled_app'
+    namespace 'light it up'
     compileSdk 34
     ndkVersion flutter.ndkVersion
 
@@ -39,8 +39,7 @@ android {
     }
 
     defaultConfig {
-        // Change this if you plan to publish — must be unique per app on a device.
-        applicationId "com.example.bjled_app"
+        applicationId "light it up"
         minSdkVersion 23
         targetSdkVersion 34
         versionCode flutterVersionCode.toInteger()
