@@ -14,7 +14,8 @@ enum BleConnectionStatus { disconnected, scanning, connecting, connected, error 
 /// If `connect()` fails to find these on your specific board, check
 /// nRF Connect's service discovery again — some batches vary.
 class BjLedUuids {
-  static final serviceUuid = Uuid.parse('0000ee00-0000-1000-8000-00805f9b34fb');
+  // Confirmed via nRF Connect service discovery on the actual device.
+  static final serviceUuid = Uuid.parse('0000eea0-0000-1000-8000-00805f9b34fb');
   static final writeCharacteristicUuid =
       Uuid.parse('0000ee02-0000-1000-8000-00805f9b34fb');
   static final notifyCharacteristicUuid =
@@ -61,7 +62,6 @@ class BleService {
     _scanSub = _ble.scanForDevices(withServices: []).listen(
       (device) {
         final isLikelyMatch = device.name.toUpperCase().contains('BJ_LED') ||
-            device.name.toUpperCase().contains('MOHUAN') ||
             device.id.toUpperCase().startsWith('FF:FF');
         if (!isLikelyMatch && device.name.isEmpty) return;
 

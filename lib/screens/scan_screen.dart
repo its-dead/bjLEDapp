@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_reactive_ble/flutter_reactive_ble.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -25,6 +26,12 @@ class _ScanScreenState extends State<ScanScreen> {
   }
 
   Future<void> _startScanFlow() async {
+    if (kIsWeb) {
+      setState(() => _error =
+          'The web version cannot connect to Bluetooth devices. Open this app on Android or iOS to control your light strip.');
+      return;
+    }
+
     final granted = await _requestPermissions();
     if (!granted) {
       setState(() => _error =
