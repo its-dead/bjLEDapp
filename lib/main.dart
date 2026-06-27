@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'services/ble_service.dart';
 import 'theme/app_theme.dart';
@@ -14,10 +15,52 @@ class BjLedApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'BJ_LED Controller',
+      title: 'light it up',
       theme: AppTheme.dark,
       debugShowCheckedModeBanner: false,
-      home: const LaunchGate(),
+      home: kIsWeb ? const WebUnsupportedScreen() : const LaunchGate(),
+    );
+  }
+}
+
+class WebUnsupportedScreen extends StatelessWidget {
+  const WebUnsupportedScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: AppTheme.background,
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24),
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 420),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Icon(Icons.bluetooth_disabled, size: 56, color: AppTheme.textSecondary),
+                const SizedBox(height: 16),
+                Text(
+                  'This app uses Bluetooth to control your light strip.',
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    color: AppTheme.textPrimary,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  'The web version can’t connect to BLE devices. Open this app on Android or iOS to find and control your light strip.',
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: AppTheme.textSecondary,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

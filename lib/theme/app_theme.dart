@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 /// rather than imposing a fixed brand color. The app's background stays
 /// near-black so color previews and presets read as glowing light.
 class AppTheme {
-  static const background = Color(0xFF0E0E12);
-  static const surface = Color(0xFF1A1A20);
-  static const surfaceHigh = Color(0xFF24242C);
+  static const background = Color.fromARGB(255, 0, 0, 0);
+  static const surface = Color(0xFF0E0E12);
+  static const surfaceHigh = Color(0xFF1A1A20);
   static const textPrimary = Color(0xFFF2F2F5);
   static const textSecondary = Color(0xFF9A9AA5);
   static const divider = Color(0xFF2E2E38);
